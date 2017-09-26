@@ -22,11 +22,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |  L2  |           |  L2  |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Esc/Cmd|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2|' / Cmd |
+ * | Esc    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2| '      |
  * |--------+------+------+------+------+------|  L1  |           |  L1  |------+------+------+------+------+--------|
  * | LShift |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Grv/L1|  '"  | Alt  | Left | F13  |                                       | F14  | Down |   [  |   ]  | ~L1  |
+ *   |Grv/L1|  '"  | Alt  |  Cmd | F13  |                                       | F14  | Cmd  |   [  |   ]  | ~L1  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | App  | LGui |       | Alt  |Ctrl/Esc|
@@ -42,18 +42,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_EQL,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   ALL_T(KC_NO),
         KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   TT(MDIA),
-        GUI_T(KC_ESC),  KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
+        KC_ESC,         KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSFT,        CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   TT(SYMB),
-        LT(SYMB,KC_GRV),KC_QUOT,      KC_LALT,KC_LEFT,KC_F13, 
+        LT(SYMB,KC_GRV),KC_QUOT,      KC_LALT,KC_LGUI,KC_F13, 
                                               ALT_T(KC_APP),  KC_LGUI,
                                                               KC_HOME,
                                                KC_SPC,KC_DELT,KC_END,
         // right hand
              MEH_T(KC_NO),KC_6,   KC_7,    KC_8,   KC_9,   KC_0,             KC_MINS,
              TT(MDIA),    KC_Y,   KC_U,    KC_I,   KC_O,   KC_P,             KC_BSLS,
-                          KC_H,   KC_J,    KC_K,   KC_L,   LT(MDIA, KC_SCLN),GUI_T(KC_QUOT),
+                          KC_H,   KC_J,    KC_K,   KC_L,   KC_SCLN,          KC_QUOT,
              TT(SYMB)    ,KC_N,   KC_M,    KC_COMM,KC_DOT, CTL_T(KC_SLSH),   KC_RSFT,
-                                  KC_F14,  KC_DOWN,KC_LBRC,KC_RBRC,          KC_FN1,
+                                  KC_F14,  KC_RGUI,KC_LBRC,KC_RBRC,          KC_FN1,
              KC_LALT,        CTL_T(KC_ESC),
              KC_PGUP,
              KC_PGDN,KC_BSPC, KC_ENT
