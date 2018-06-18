@@ -253,11 +253,9 @@ void matrix_scan_user(void) {
     switch (layer) {
       // TODO: Make this relevant to the ErgoDox EZ.
         case 1:
-        case 4:
             ergodox_right_led_1_on();
             break;
         case 2:
-        case 5:
             ergodox_right_led_2_on();
             break;
         default:
