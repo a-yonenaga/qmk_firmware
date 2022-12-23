@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | Ctrl |Grv/L1| Alt  |  Cmd | F13  |                                       | F14  | Cmd  |   [  |   ]  | Ctrl |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | App  | LGui |       | Alt  |Ctrl/Esc|
+ *                                        | Caps | LGui |       | Ins  | KC_APP |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | Home |       | PgUp |        |      |
  *                                 | Space|Delete|------|       |------|Back    |Enter |
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         GUI_T(KC_ESC),  KC_A,  KC_S,     KC_D,    KC_F,    KC_G,
         KC_LSFT,        KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,   MO(SYMB),
         KC_LCTRL,       LT(SYMB,KC_GRV), KC_LALT, KC_LGUI, KC_F13,
-                                                           ALT_T(KC_APP),  KC_LGUI,
+                                                           KC_CAPS,        KC_LGUI,
                                                                            KC_HOME,
                                                            KC_SPC,KC_DELT, KC_END,
         // right hand
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_H,   KC_J,    KC_K,   KC_L,   KC_SCLN,          GUI_T(KC_QUOT),
              MO(SYMB)    ,KC_N,   KC_M,    KC_COMM,KC_DOT, KC_SLSH,          KC_RSFT,
                                   KC_F14,  KC_RGUI,KC_LBRC,KC_RBRC,          KC_RCTRL,
-             KC_LALT,        CTL_T(KC_ESC),
+             KC_INS,          KC_APP,
              KC_PGUP,
              KC_PGDN,KC_BSPC, KC_ENT
     ),
