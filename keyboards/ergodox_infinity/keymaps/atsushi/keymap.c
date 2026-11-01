@@ -4,9 +4,9 @@
 #include "version.h"
 
 #define BASE 0 // default layer
-#define SYMB 1 // symbols
-#define MDIA 2 // media keys
-#define WIN  3 // Windows
+#define WIN  1 // Windows
+#define SYMB 2 // symbols
+#define MDIA 3 // media keys
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -60,8 +60,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_PGDN,KC_BSPC, KC_ENT
     ),
 
-    // KC_QUOT
-/* Keymap 1: Symbol Layer
+/* Keymap 1: Layer for Windows
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |Esc/Ctrl|      |      |      |      |      |------|           |------|      |      |      |      |      | '/Ctrl |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      | Win  | Alt  |      |                                       |      | Alt  |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+// MEDIA AND MOUSE
+[WIN] = LAYOUT_ergodox(
+        KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+        CTL_T(KC_ESC), KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+        KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,       KC_TRNS, KC_LGUI, KC_LALT,  KC_TRNS,
+        KC_TRNS, KC_TRNS,
+        KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS,
+// right hand
+KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, CTL_T(KC_QUOT),
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_RALT,  KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS,
+        KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS
+),
+
+/* Keymap 2: Symbol Layer
  *
  * ,---------------------------------------------------.           ,--------------------------------------------------.
  * |Version  |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |PrScrn|  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
@@ -103,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
 ),
-/* Keymap 2: Media and mouse keys
+/* Keymap 3: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -143,47 +184,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_WBAK
-),
-/* Keymap 3: Layer for Windows
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |Esc/Ctrl|      |      |      |      |      |------|           |------|      |      |      |      |      | '/Ctrl |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      | Win  | Alt  |      |                                       |      | Alt  |      |      |      |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-// MEDIA AND MOUSE
-[WIN] = LAYOUT_ergodox(
-       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-       CTL_T(KC_ESC), KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
-       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,       KC_TRNS, KC_LGUI, KC_LALT,  KC_TRNS,
-                                                          KC_TRNS, KC_TRNS,
-                                                                   KC_TRNS,
-                                                 KC_TRNS, KC_TRNS, KC_TRNS,
-    // right hand
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, CTL_T(KC_QUOT),
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-                          KC_TRNS, KC_RALT,  KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS
 ),
 };
 const uint16_t PROGMEM fn_actions[] = {
@@ -252,10 +252,10 @@ void matrix_scan_user(void) {
     ergodox_right_led_3_off();
     switch (layer) {
       // TODO: Make this relevant to the ErgoDox EZ.
-        case 1:
+        case 2:
             ergodox_right_led_1_on();
             break;
-        case 2:
+        case 3:
             ergodox_right_led_2_on();
             break;
         default:
